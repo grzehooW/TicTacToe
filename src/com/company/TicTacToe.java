@@ -16,24 +16,31 @@ public class TicTacToe {
 
         printGameBoard(gameBoard);  //Game board print
 
-        // Scanner for catch entered position by user
-        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            // Scanner for catch entered position by user
+            Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter your placement (1 - 9)");
+            System.out.println("Enter your placement (1 - 9)");
 
-        int playerPosition = scanner.nextInt();  // position of entered by user
+            int playerPosition = scanner.nextInt();  // position of entered by user
+
+            System.out.println(playerPosition);
 
 
+            placePiece(gameBoard,playerPosition,"player");
 
-        placePiece(gameBoard,playerPosition,"user");
+            Random random = new Random();   //Random
+            int cpuPosition = random.nextInt(9) + 1;  //position in array start from 0. Position changed form 1 to 9.
+            placePiece(gameBoard,cpuPosition,"cpu");
 
-        Random random = new Random();   //Random till
-        int cpuPosition = random.nextInt(9) + 1;  //position in array start from 0. Position changed form 1 to 9.
-        placePiece(gameBoard,cpuPosition,"cpu");
-
-        printGameBoard(gameBoard);  //Game Board print each time is entered a number position(update a clipBoard)
+            printGameBoard(gameBoard);  //Game Board print each time is entered a number position(update a clipBoard)
+        }
 
     }
+
+
+
+
 
     public static void printGameBoard(char[][] gameBoard) {
 
@@ -43,7 +50,7 @@ public class TicTacToe {
             }
             System.out.println();
         }// Enhanced loop  iterating throw gameBoard Array.
-    } //methode printed Board
+    } //method printed Board
 
     public static void placePiece(char[][] gameBoard,int pos,String user){
 
@@ -65,27 +72,26 @@ public class TicTacToe {
                 gameBoard [0][4] = symbol;
                 break;
             case 4:
-                gameBoard [1][0] = symbol;
-                break;
-            case 5:
-                gameBoard [1][2] = symbol;
-                break;
-            case 6:
-                gameBoard [1][4] = symbol;
-                break;
-            case 7:
                 gameBoard [2][0] = symbol;
                 break;
-            case 8:
+            case 5:
                 gameBoard [2][2] = symbol;
                 break;
-            case 9:
+            case 6:
                 gameBoard [2][4] = symbol;
+                break;
+            case 7:
+                gameBoard [4][0] = symbol;
+                break;
+            case 8:
+                gameBoard [4][2] = symbol;
+                break;
+            case 9:
+                gameBoard [4][4] = symbol;
                 break;
             default:
                 break;
 
-        }
-
+        }//switch case place X or O in to a board
     }
 }
